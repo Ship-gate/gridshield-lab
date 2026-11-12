@@ -1,0 +1,18 @@
+{
+  "format_version": 1,
+  "name": "Reviewer overload example",
+  "initial_load_mw": 0.8,
+  "proposed_load_mw": 6.5,
+  "identity_fixture": "operator",
+  "measurement_age_seconds": 0.2,
+  "topology_version": "demo-v1",
+  "voltages_pu": [
+    1.02,
+    1.0108491294686217,
+    1.0076876021328653,
+    1.0071532064968918,
+    1.005743373686042,
+    1.0068085280920733
+  ],
+  "expected_status": "ALERT"
+}

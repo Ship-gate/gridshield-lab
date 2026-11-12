@@ -1,0 +1,618 @@
+{
+  "cases": [
+    {
+      "id": "routine",
+      "title": "Routine demand change",
+      "expected": "NO_ISSUE_DETECTED",
+      "gridshield": "NO_ISSUE_DETECTED",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 186.72,
+      "reasons": [
+        {
+          "code": "CHECKS_CLEAR",
+          "level": "info",
+          "detail": "The proposed state stays within this model's configured limits. This does not establish real-world safety."
+        }
+      ]
+    },
+    {
+      "id": "overload",
+      "title": "Authorized, but overloaded",
+      "expected": "ALERT",
+      "gridshield": "ALERT",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 161.06,
+      "reasons": [
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "Supply feeder reaches 185.7% of its illustrative current rating."
+        },
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "South branch reaches 159.6% of its illustrative current rating."
+        },
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "Industry link reaches 146.3% of its illustrative current rating."
+        }
+      ]
+    },
+    {
+      "id": "recovery",
+      "title": "Reduce an existing overload",
+      "expected": "NO_ISSUE_DETECTED",
+      "gridshield": "NO_ISSUE_DETECTED",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 159.51,
+      "reasons": [
+        {
+          "code": "CHECKS_CLEAR",
+          "level": "info",
+          "detail": "The proposed state stays within this model's configured limits. This does not establish real-world safety."
+        }
+      ]
+    },
+    {
+      "id": "unknown_actor",
+      "title": "Unknown operator",
+      "expected": "ALERT",
+      "gridshield": "ALERT",
+      "simple_rules": "ALERT",
+      "matches_expected": true,
+      "elapsed_ms": 77.51,
+      "reasons": [
+        {
+          "code": "UNKNOWN_ACTOR",
+          "level": "alert",
+          "detail": "The simulated identity is not in the lab operator registry."
+        }
+      ]
+    },
+    {
+      "id": "viewer",
+      "title": "Viewer requests a change",
+      "expected": "ALERT",
+      "gridshield": "ALERT",
+      "simple_rules": "ALERT",
+      "matches_expected": true,
+      "elapsed_ms": 75.82,
+      "reasons": [
+        {
+          "code": "ACTION_NOT_PERMITTED",
+          "level": "alert",
+          "detail": "The lab registry does not permit this identity to request this operation."
+        }
+      ]
+    },
+    {
+      "id": "unknown_device",
+      "title": "Unknown equipment",
+      "expected": "ALERT",
+      "gridshield": "ALERT",
+      "simple_rules": "ALERT",
+      "matches_expected": true,
+      "elapsed_ms": 77.61,
+      "reasons": [
+        {
+          "code": "UNKNOWN_DEVICE",
+          "level": "alert",
+          "detail": "The request names equipment outside the supported synthetic load interface."
+        }
+      ]
+    },
+    {
+      "id": "unsupported",
+      "title": "Unsupported operation",
+      "expected": "ALERT",
+      "gridshield": "ALERT",
+      "simple_rules": "ALERT",
+      "matches_expected": true,
+      "elapsed_ms": 107.51,
+      "reasons": [
+        {
+          "code": "ACTION_NOT_PERMITTED",
+          "level": "alert",
+          "detail": "The lab registry does not permit this identity to request this operation."
+        },
+        {
+          "code": "UNSUPPORTED_ACTION",
+          "level": "alert",
+          "detail": "Only a proposed industry load change can be assessed."
+        }
+      ]
+    },
+    {
+      "id": "stale",
+      "title": "Outdated measurements",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "gridshield": "INSUFFICIENT_EVIDENCE",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 79.3,
+      "reasons": [
+        {
+          "code": "STALE_DATA",
+          "level": "unknown",
+          "detail": "Measurements exceed the illustrative five-second freshness limit."
+        }
+      ]
+    },
+    {
+      "id": "missing",
+      "title": "Missing measurements",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "gridshield": "INSUFFICIENT_EVIDENCE",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 79.72,
+      "reasons": [
+        {
+          "code": "MISSING_DATA",
+          "level": "unknown",
+          "detail": "Industry has no finite voltage measurement."
+        }
+      ]
+    },
+    {
+      "id": "conflicting",
+      "title": "Conflicting measurements",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "gridshield": "INSUFFICIENT_EVIDENCE",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 79.63,
+      "reasons": [
+        {
+          "code": "INCONSISTENT_DATA",
+          "level": "unknown",
+          "detail": "Industry differs from the model by 0.080 pu. A sensor or model issue is possible."
+        }
+      ]
+    },
+    {
+      "id": "future",
+      "title": "Clock inconsistency",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "gridshield": "INSUFFICIENT_EVIDENCE",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 81.45,
+      "reasons": [
+        {
+          "code": "CLOCK_INCONSISTENCY",
+          "level": "unknown",
+          "detail": "Measurements appear to come from the future."
+        }
+      ]
+    },
+    {
+      "id": "topology",
+      "title": "Outdated network model",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "gridshield": "INSUFFICIENT_EVIDENCE",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 83.88,
+      "reasons": [
+        {
+          "code": "TOPOLOGY_MISMATCH",
+          "level": "unknown",
+          "detail": "The reported network topology does not match this model."
+        }
+      ]
+    },
+    {
+      "id": "disconnected",
+      "title": "Disconnected model",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "gridshield": "INSUFFICIENT_EVIDENCE",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 73.98,
+      "reasons": [
+        {
+          "code": "MODEL_UNAVAILABLE",
+          "level": "unknown",
+          "detail": "A complete baseline power-flow result is unavailable; no physical assessment is made."
+        }
+      ]
+    },
+    {
+      "id": "noise",
+      "title": "Small measurement variation",
+      "expected": "NO_ISSUE_DETECTED",
+      "gridshield": "NO_ISSUE_DETECTED",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 165.67,
+      "reasons": [
+        {
+          "code": "CHECKS_CLEAR",
+          "level": "info",
+          "detail": "The proposed state stays within this model's configured limits. This does not establish real-world safety."
+        }
+      ]
+    },
+    {
+      "id": "normal_0",
+      "title": "Routine variation 1",
+      "expected": "NO_ISSUE_DETECTED",
+      "gridshield": "NO_ISSUE_DETECTED",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 194.31,
+      "reasons": [
+        {
+          "code": "CHECKS_CLEAR",
+          "level": "info",
+          "detail": "The proposed state stays within this model's configured limits. This does not establish real-world safety."
+        }
+      ]
+    },
+    {
+      "id": "overload_0",
+      "title": "Demand stress 1",
+      "expected": "ALERT",
+      "gridshield": "ALERT",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 165.93,
+      "reasons": [
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "Supply feeder reaches 192.1% of its illustrative current rating."
+        },
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "South branch reaches 165.9% of its illustrative current rating."
+        },
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "Industry link reaches 152.6% of its illustrative current rating."
+        }
+      ]
+    },
+    {
+      "id": "normal_1",
+      "title": "Routine variation 2",
+      "expected": "NO_ISSUE_DETECTED",
+      "gridshield": "NO_ISSUE_DETECTED",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 164.51,
+      "reasons": [
+        {
+          "code": "CHECKS_CLEAR",
+          "level": "info",
+          "detail": "The proposed state stays within this model's configured limits. This does not establish real-world safety."
+        }
+      ]
+    },
+    {
+      "id": "overload_1",
+      "title": "Demand stress 2",
+      "expected": "ALERT",
+      "gridshield": "ALERT",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 164.24,
+      "reasons": [
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "Supply feeder reaches 206.1% of its illustrative current rating."
+        },
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "South branch reaches 179.8% of its illustrative current rating."
+        },
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "Industry link reaches 166.4% of its illustrative current rating."
+        },
+        {
+          "code": "VOLTAGE_LIMIT",
+          "level": "alert",
+          "detail": "Industry reaches 0.949 pu, outside the lab's 0.95\u20131.05 pu band."
+        }
+      ]
+    },
+    {
+      "id": "normal_2",
+      "title": "Routine variation 3",
+      "expected": "NO_ISSUE_DETECTED",
+      "gridshield": "NO_ISSUE_DETECTED",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 164.35,
+      "reasons": [
+        {
+          "code": "CHECKS_CLEAR",
+          "level": "info",
+          "detail": "The proposed state stays within this model's configured limits. This does not establish real-world safety."
+        }
+      ]
+    },
+    {
+      "id": "overload_2",
+      "title": "Demand stress 3",
+      "expected": "ALERT",
+      "gridshield": "ALERT",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 197.97,
+      "reasons": [
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "Supply feeder reaches 198.1% of its illustrative current rating."
+        },
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "South branch reaches 171.9% of its illustrative current rating."
+        },
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "Industry link reaches 158.5% of its illustrative current rating."
+        }
+      ]
+    },
+    {
+      "id": "normal_3",
+      "title": "Routine variation 4",
+      "expected": "NO_ISSUE_DETECTED",
+      "gridshield": "NO_ISSUE_DETECTED",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 162.04,
+      "reasons": [
+        {
+          "code": "CHECKS_CLEAR",
+          "level": "info",
+          "detail": "The proposed state stays within this model's configured limits. This does not establish real-world safety."
+        }
+      ]
+    },
+    {
+      "id": "overload_3",
+      "title": "Demand stress 4",
+      "expected": "ALERT",
+      "gridshield": "ALERT",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 166.52,
+      "reasons": [
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "Supply feeder reaches 207.7% of its illustrative current rating."
+        },
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "South branch reaches 181.4% of its illustrative current rating."
+        },
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "Industry link reaches 168.0% of its illustrative current rating."
+        },
+        {
+          "code": "VOLTAGE_LIMIT",
+          "level": "alert",
+          "detail": "Industry reaches 0.948 pu, outside the lab's 0.95\u20131.05 pu band."
+        }
+      ]
+    },
+    {
+      "id": "normal_4",
+      "title": "Routine variation 5",
+      "expected": "NO_ISSUE_DETECTED",
+      "gridshield": "NO_ISSUE_DETECTED",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 156.41,
+      "reasons": [
+        {
+          "code": "CHECKS_CLEAR",
+          "level": "info",
+          "detail": "The proposed state stays within this model's configured limits. This does not establish real-world safety."
+        }
+      ]
+    },
+    {
+      "id": "overload_4",
+      "title": "Demand stress 5",
+      "expected": "ALERT",
+      "gridshield": "ALERT",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 188.42,
+      "reasons": [
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "Supply feeder reaches 172.3% of its illustrative current rating."
+        },
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "South branch reaches 146.2% of its illustrative current rating."
+        },
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "Industry link reaches 133.0% of its illustrative current rating."
+        }
+      ]
+    },
+    {
+      "id": "normal_5",
+      "title": "Routine variation 6",
+      "expected": "NO_ISSUE_DETECTED",
+      "gridshield": "NO_ISSUE_DETECTED",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 161.15,
+      "reasons": [
+        {
+          "code": "CHECKS_CLEAR",
+          "level": "info",
+          "detail": "The proposed state stays within this model's configured limits. This does not establish real-world safety."
+        }
+      ]
+    },
+    {
+      "id": "overload_5",
+      "title": "Demand stress 6",
+      "expected": "ALERT",
+      "gridshield": "ALERT",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 161.54,
+      "reasons": [
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "Supply feeder reaches 174.2% of its illustrative current rating."
+        },
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "South branch reaches 148.1% of its illustrative current rating."
+        },
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "Industry link reaches 134.8% of its illustrative current rating."
+        }
+      ]
+    },
+    {
+      "id": "normal_6",
+      "title": "Routine variation 7",
+      "expected": "NO_ISSUE_DETECTED",
+      "gridshield": "NO_ISSUE_DETECTED",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 168.12,
+      "reasons": [
+        {
+          "code": "CHECKS_CLEAR",
+          "level": "info",
+          "detail": "The proposed state stays within this model's configured limits. This does not establish real-world safety."
+        }
+      ]
+    },
+    {
+      "id": "overload_6",
+      "title": "Demand stress 7",
+      "expected": "ALERT",
+      "gridshield": "ALERT",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 163.36,
+      "reasons": [
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "Supply feeder reaches 187.6% of its illustrative current rating."
+        },
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "South branch reaches 161.5% of its illustrative current rating."
+        },
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "Industry link reaches 148.1% of its illustrative current rating."
+        }
+      ]
+    },
+    {
+      "id": "normal_7",
+      "title": "Routine variation 8",
+      "expected": "NO_ISSUE_DETECTED",
+      "gridshield": "NO_ISSUE_DETECTED",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 186.27,
+      "reasons": [
+        {
+          "code": "CHECKS_CLEAR",
+          "level": "info",
+          "detail": "The proposed state stays within this model's configured limits. This does not establish real-world safety."
+        }
+      ]
+    },
+    {
+      "id": "overload_7",
+      "title": "Demand stress 8",
+      "expected": "ALERT",
+      "gridshield": "ALERT",
+      "simple_rules": "NO_ISSUE_DETECTED",
+      "matches_expected": true,
+      "elapsed_ms": 163.2,
+      "reasons": [
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "Supply feeder reaches 180.0% of its illustrative current rating."
+        },
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "South branch reaches 153.9% of its illustrative current rating."
+        },
+        {
+          "code": "LINE_OVERLOAD",
+          "level": "alert",
+          "detail": "Industry link reaches 140.6% of its illustrative current rating."
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total": 30,
+    "gridshield": {
+      "matches": 30,
+      "missed_alerts": 0,
+      "false_alerts": 0,
+      "uncertainty_reported_normal": 0
+    },
+    "simple_rules": {
+      "matches": 15,
+      "missed_alerts": 9,
+      "false_alerts": 0,
+      "uncertainty_reported_normal": 6
+    },
+    "class_counts": {
+      "NO_ISSUE_DETECTED": 11,
+      "ALERT": 13,
+      "INSUFFICIENT_EVIDENCE": 6
+    },
+    "median_ms": 161.79,
+    "p95_ms": 194.31
+  },
+  "generated_at": "2026-11-12T13:24:00.576847+00:00",
+  "policy_hash": "7ef865dc93d33664fedc92d19193a02e1e615763fa43a36aa3ac91a711880a54",
+  "app_version": "0.2.0",
+  "source_hash": "fec2d02104a47d884f9ba4b8c21e3751276bcf7a856810382475435a94f6cdcd",
+  "model_hash": "e031af233ffa1bb6423a37e46b6c924d79c7021e121b2abb2845d14021219c52",
+  "scope": "Synthetic steady-state model. No real equipment connected. Findings are not a safety certification.",
+  "method": "30 declared development regression cases, including 16 seeded variations (seed 20261112). Not held-out, independent, or utility validation. Baseline checks lab identity, action, device and numeric envelope only; it is not a commercial product comparison."
+}

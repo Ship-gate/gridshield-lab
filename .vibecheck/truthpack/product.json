@@ -1,0 +1,32 @@
+{
+  "status": "declared-new-project-contract",
+  "name": "GridShield Lab",
+  "version": "0.2.0",
+  "features": [
+    "six-bus synthetic AC power flow",
+    "observe-only command assessment",
+    "uncertainty handling",
+    "scenario comparison",
+    "local JSON report download",
+    "reviewer-supplied synthetic case replay",
+    "persistent local run history"
+  ],
+  "copy": {
+    "mode": "Simulation only",
+    "normal": "No issue detected",
+    "alert": "Alert",
+    "unknown": "Insufficient evidence",
+    "scope": "Synthetic steady-state model. No real equipment connected. Findings are not a safety certification."
+  },
+  "claims_excluded": [
+    "production grid protection",
+    "continent-wide coverage",
+    "attack attribution",
+    "formal proof of physical safety",
+    "independent validation already completed",
+    "government approval or endorsement",
+    "government certification",
+    "eligibility for a funding program"
+  ],
+  "pricing": null
+}

@@ -1,0 +1,1 @@
+{"status":"declared-new-project-contract","http":{"200":"success","400":"INVALID_REQUEST","403":"LOCAL_ONLY","404":"NOT_FOUND","413":"BODY_TOO_LARGE","415":"JSON_REQUIRED","500":"INTERNAL_ERROR"},"cli":{"0":"success","1":"startup or checks failed"}}

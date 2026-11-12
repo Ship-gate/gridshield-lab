@@ -1,0 +1,30 @@
+{
+  "name": "Cedar Valley — fictional feeder",
+  "version": "demo-v1",
+  "nominal_kv": 20.0,
+  "source_voltage_pu": 1.02,
+  "reactive_to_active_ratio": 0.3,
+  "line_parameters": {"r_ohm_per_km":0.25,"x_ohm_per_km":0.35,"c_nf_per_km":10.0,"max_i_ka":0.14},
+  "buses": [
+    {"id":0,"name":"Grid supply","x":95,"y":220},
+    {"id":1,"name":"Substation","x":290,"y":220},
+    {"id":2,"name":"Hospital","x":485,"y":90},
+    {"id":3,"name":"Town center","x":485,"y":350},
+    {"id":4,"name":"Industry","x":720,"y":350},
+    {"id":5,"name":"Homes","x":720,"y":90}
+  ],
+  "lines": [
+    {"id":0,"name":"Supply feeder","from":0,"to":1,"length_km":4.0},
+    {"id":1,"name":"North branch","from":1,"to":2,"length_km":3.0},
+    {"id":2,"name":"South branch","from":1,"to":3,"length_km":3.0},
+    {"id":3,"name":"Industry link","from":3,"to":4,"length_km":2.0},
+    {"id":4,"name":"Residential link","from":2,"to":5,"length_km":2.0}
+  ],
+  "loads": [
+    {"id":"hospital","bus":2,"p_mw":0.7},
+    {"id":"town","bus":3,"p_mw":0.6},
+    {"id":"industry","bus":4,"p_mw":0.8},
+    {"id":"homes","bus":5,"p_mw":0.5}
+  ],
+  "scope":"Illustrative parameters selected for a reproducible lab; not a model of a real feeder. No dynamic, relay, frequency, or islanded-grid model."
+}

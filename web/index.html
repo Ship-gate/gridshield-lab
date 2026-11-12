@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GridShield Lab · Local simulation</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to assessment</a>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="GridShield Lab home"><svg viewBox="0 0 32 36" aria-hidden="true"><path d="M16 2 29 7v11c0 7-7 12-13 16C10 30 3 25 3 18V7Z"/><path d="m18 8-8 11h6l-2 9 9-13h-7Z"/></svg><span>GridShield <span class="brand-light">Lab</span></span></a>
+    <div class="header-meta"><span class="live-dot"></span> Local simulation <span class="version">v0.2</span></div>
+  </header>
+  <div class="page-heading"><div><h1>Cedar Valley simulation</h1><p class="intro">Explore a proposed change. See the electrical consequences and the evidence.</p></div><button id="download" class="button secondary" disabled>Export assessment <span aria-hidden="true">↗</span></button></div>
+  <div id="error" role="alert" hidden></div>
+  <div class="layout">
+    <aside class="scenarios" aria-label="Simulation controls">
+      <div class="panel-title"><span>Choose a scenario</span><span id="scenario-count">—</span></div>
+      <div id="scenario-list" class="scenario-list"></div>
+      <div class="experiment">
+        <p id="scenario-description"></p>
+        <div id="custom-control" hidden><label for="load">Industry demand <output id="load-value" for="load">0.9 MW</output></label><input id="load" type="range" min="0" max="15" step="0.1" value="0.9"><div class="range-ends"><span>0 MW</span><span>15 MW</span></div></div>
+        <button id="run" class="button primary" disabled>Run assessment <span aria-hidden="true">→</span></button>
+        <p class="control-note">Observes a proposed state.<br>No equipment commands are sent.</p>
+      </div>
+    </aside>
+    <main id="main" tabindex="-1">
+      <section class="network-panel" aria-labelledby="network-title">
+        <div class="network-header"><h2 id="network-title">Six nodes. One fictional feeder.</h2><div class="view-switch" role="group" aria-label="Network state"><button id="view-current" aria-pressed="false">Current</button><button id="view-proposed" aria-pressed="true">Proposed</button></div></div>
+        <p id="graph-caption" class="graph-caption">Loading the local model…</p>
+        <p class="diagram-hint">Scroll to see the full grid →</p>
+        <div class="diagram-scroll" tabindex="0" role="region" aria-label="Grid diagram; scroll horizontally on small screens"><svg id="network" viewBox="0 0 820 440" role="img" aria-label="Synthetic six-bus grid diagram"></svg></div>
+        <div class="network-footer"><span><i class="legend-line"></i> Within lab limits</span><span><i class="legend-line alert-line"></i> Limit exceeded</span><span id="model-note">20 kV · balanced AC model</span></div>
+      </section>
+      <div class="metrics" aria-label="Proposed-state results">
+        <div><span>Proposed demand</span><strong id="metric-demand">—</strong><small id="demand-change">Proposed state</small></div>
+        <div><span>Proposed peak loading</span><strong id="metric-loading">—</strong><small>Illustrative limit: 100%</small></div>
+        <div><span>Proposed lowest voltage</span><strong id="metric-voltage">—</strong><small>Lab band: 0.95–1.05 pu</small></div>
+      </div>
+      <section id="assessment" class="assessment" aria-labelledby="result-title" aria-live="polite" aria-atomic="true">
+        <div class="result-heading"><h2 id="result-title">Preparing your first assessment</h2><span id="timing"></span></div>
+        <p id="result-scenario" class="result-scenario"></p><ul id="reasons"></ul>
+        <div class="comparison"><div><span>Simple permission + range checks</span><strong id="simple-status">—</strong></div><div><span>GridShield + model + data quality</span><strong id="gridshield-status">—</strong></div></div>
+        <details id="evidence"><summary>Inspect the measurements and request</summary><p id="request-detail"></p><p id="freshness"></p><div class="table-wrap"><table><caption>Baseline measurements compared with the baseline model</caption><thead><tr><th>Location</th><th>Observed</th><th>Modeled</th><th>Difference</th></tr></thead><tbody id="measurements"></tbody></table></div><p class="evidence-note">Built-in cases generate measurements from this simulator; imported cases use the supplied readings. Neither establishes independent sensor trust or detects all coordinated falsification.</p></details>
+      </section>
+    </main>
+  </div>
+  <section class="benchmark" aria-labelledby="benchmark-title"><div class="benchmark-heading"><div><h2 id="benchmark-title">Put every scenario through the same checks.</h2><p>30 declared synthetic cases, including normal operations, overloads, permission failures and missing evidence.</p></div><button id="benchmark" class="button secondary">Run all 30 cases <span aria-hidden="true">→</span></button></div><div id="benchmark-result" aria-live="polite"></div></section>
+  <section class="evaluation" aria-labelledby="replay-title">
+    <div class="evaluation-intro"><h2 id="replay-title">Evaluate your own synthetic case.</h2><p>Bring six voltage readings, a proposed demand change, and a lab identity fixture. GridShield assesses the evidence; an expected label never controls the finding.</p><button id="template" class="button secondary">Download case template</button></div>
+    <div class="replay-controls"><label for="case-file">Choose a synthetic JSON case · maximum 4 KB</label><input id="case-file" type="file" accept=".json,application/json"><button id="replay" class="button primary" disabled>Assess imported case</button><p id="replay-message" role="status">Use synthetic data only. This lab does not authenticate operators or establish sensor trust.</p></div>
+  </section>
+  <section class="history" aria-labelledby="history-title"><div class="history-heading"><div><h2 id="history-title">Saved evaluation runs</h2><p>The latest 20 runs are listed here. Records stay on this computer and can be exported for review.</p></div><button id="refresh-history" class="button secondary">Refresh history</button></div><p id="history-message" role="status"></p><div class="table-wrap"><table><thead><tr><th>Run</th><th>Saved</th><th>Outcome</th><th>Review</th></tr></thead><tbody id="run-history"></tbody></table></div><p class="history-note">These are editable local records, not signed audit receipts. Exported reports identify the application, model, policy, and source snapshot.</p></section>
+  <footer><div><strong>Simulation only.</strong> Synthetic steady-state model. No real equipment connected.<br>Findings are not a safety certification, proof of attack, or protection against a real outage.</div><div>Open-source research prototype<br>Fictional six-bus feeder</div></footer>
+</body>
+</html>

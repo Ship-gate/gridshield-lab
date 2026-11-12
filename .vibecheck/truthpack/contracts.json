@@ -1,0 +1,82 @@
+{
+  "status": "declared-new-project-contract",
+  "evaluate": {
+    "request": {
+      "scenario_id": "catalog identifier",
+      "load_mw": "optional finite number 0 through 15; custom scenario only"
+    },
+    "response_fields": [
+      "id",
+      "status",
+      "reasons",
+      "baseline",
+      "predicted",
+      "command",
+      "telemetry",
+      "elapsed_ms",
+      "simple_status",
+      "scope",
+      "policy_hash",
+      "model_hash",
+      "app_version",
+      "created_at",
+      "source_hash",
+      "input_source"
+    ]
+  },
+  "statuses": [
+    "NO_ISSUE_DETECTED",
+    "ALERT",
+    "INSUFFICIENT_EVIDENCE"
+  ],
+  "benchmark": {
+    "request": {},
+    "response_fields": [
+      "cases",
+      "summary",
+      "scope",
+      "app_version",
+      "source_hash"
+    ]
+  },
+  "error": {
+    "fields": [
+      "error",
+      "message"
+    ]
+  },
+  "policy": {
+    "version": "0.1.0",
+    "voltage_min_pu": 0.95,
+    "voltage_max_pu": 1.05,
+    "line_loading_max_percent": 100.0,
+    "max_age_seconds": 5.0,
+    "future_tolerance_seconds": 0.5,
+    "voltage_residual_max_pu": 0.02,
+    "topology_version": "demo-v1"
+  },
+  "replay": {
+    "request": {
+      "format_version": 1,
+      "name": "nonempty string, at most 80 characters",
+      "initial_load_mw": "finite number 0..15",
+      "proposed_load_mw": "finite number 0..15",
+      "identity_fixture": "operator | viewer | unknown",
+      "measurement_age_seconds": "finite number -3600..86400",
+      "topology_version": "demo-v1 | demo-v0",
+      "voltages_pu": "array of six finite numbers 0..2 or null",
+      "expected_status": "optional development label; never used in the assessment"
+    },
+    "response": "assessment plus replay_case, input_source, expected_match; no real identity or trusted measurement claim"
+  },
+  "history": {
+    "storage": "SQLite in work/gridshield-runtime/runs.sqlite3",
+    "list": "most recent 20 local run summaries",
+    "detail": "saved JSON by validated UUID; never an arbitrary path",
+    "kinds": [
+      "assessment",
+      "benchmark",
+      "replay"
+    ]
+  }
+}

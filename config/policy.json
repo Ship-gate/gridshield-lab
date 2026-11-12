@@ -1,0 +1,10 @@
+{
+  "version": "0.1.0",
+  "voltage_min_pu": 0.95,
+  "voltage_max_pu": 1.05,
+  "line_loading_max_percent": 100.0,
+  "max_age_seconds": 5.0,
+  "future_tolerance_seconds": 0.5,
+  "voltage_residual_max_pu": 0.02,
+  "topology_version": "demo-v1"
+}

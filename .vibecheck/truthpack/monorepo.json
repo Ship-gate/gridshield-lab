@@ -1,0 +1,1 @@
+{"status":"declared-new-project-contract","packages":["gridshield-lab"],"runtime":"Python 3.11+","dependencies":["pandapower"],"development_dependencies":["pytest"],"entry":"gridshield/__main__.py","frontend":"local HTML/CSS/JavaScript; no external assets or JavaScript dependencies"}

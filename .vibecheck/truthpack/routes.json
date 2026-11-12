@@ -1,0 +1,56 @@
+{
+  "status": "declared project contract; exercised by local HTTP and contract tests for v0.2",
+  "scope": "local simulation only; no equipment routes",
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/",
+      "handler": "gridshield.server.Handler.do_GET"
+    },
+    {
+      "method": "GET",
+      "path": "/app.js",
+      "handler": "gridshield.server.Handler.do_GET"
+    },
+    {
+      "method": "GET",
+      "path": "/style.css",
+      "handler": "gridshield.server.Handler.do_GET"
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "handler": "gridshield.server.Handler.do_GET"
+    },
+    {
+      "method": "GET",
+      "path": "/api/catalog",
+      "handler": "gridshield.server.Handler.do_GET"
+    },
+    {
+      "method": "POST",
+      "path": "/api/evaluate",
+      "handler": "gridshield.server.Handler.do_POST"
+    },
+    {
+      "method": "POST",
+      "path": "/api/benchmark",
+      "handler": "gridshield.server.Handler.do_POST"
+    },
+    {
+      "method": "POST",
+      "path": "/api/replay",
+      "handler": "gridshield.server.Handler.do_POST"
+    },
+    {
+      "method": "GET",
+      "path": "/api/runs",
+      "handler": "gridshield.server.Handler.do_GET"
+    },
+    {
+      "method": "GET",
+      "path": "/api/runs/{run_id}",
+      "handler": "gridshield.server.Handler.do_GET"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "status": "declared-new-project-contract",
+  "commands": [
+    {
+      "command": "python -m gridshield",
+      "flags": [],
+      "purpose": "serve on 127.0.0.1:8765"
+    },
+    {
+      "command": "python -m gridshield.benchmark",
+      "flags": [],
+      "purpose": "write local benchmark report"
+    },
+    {
+      "command": "python launch.py",
+      "flags": [],
+      "purpose": "start local server and open browser"
+    },
+    {
+      "command": "python -m pytest -q",
+      "purpose": "run development checks"
+    },
+    {
+      "command": "python -m gridshield.replay <case.json>",
+      "purpose": "assess a local synthetic JSON case and print a report; no arbitrary code execution"
+    }
+  ],
+  "launcher": "Open GridShield.command"
+}
